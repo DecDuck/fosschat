@@ -1,11 +1,11 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "6fe0ea2b-cbdb-4751-9464-70ae6b25fb52",
+  "id": "b32a51d6-81d5-4625-a795-ee8641c57cd6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "signin": {
-      "name": "signin",
+    "signins": {
+      "name": "signins",
       "columns": {
         "userId": {
           "name": "userId",
@@ -39,9 +39,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "signin_userId_users_id_fk": {
-          "name": "signin_userId_users_id_fk",
-          "tableFrom": "signin",
+        "userId": {
+          "name": "userId",
+          "tableFrom": "signins",
           "tableTo": "users",
           "columnsFrom": [
             "userId"
@@ -54,12 +54,12 @@
         }
       },
       "compositePrimaryKeys": {
-        "signin_userId_type_pk": {
+        "signins_userId_type_pk": {
           "columns": [
             "userId",
             "type"
           ],
-          "name": "signin_userId_type_pk"
+          "name": "signins_userId_type_pk"
         }
       },
       "uniqueConstraints": {},
@@ -82,6 +82,13 @@
           "notNull": true,
           "autoincrement": false
         },
+        "displayName": {
+          "name": "displayName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "email": {
           "name": "email",
           "type": "text",
@@ -92,13 +99,6 @@
         "created_at": {
           "name": "created_at",
           "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "avatar": {
-          "name": "avatar",
-          "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false

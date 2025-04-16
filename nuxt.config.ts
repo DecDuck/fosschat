@@ -1,14 +1,28 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // https://nuxt.com/modules
-  modules: ["@nuxthub/core", "@nuxt/eslint", "@nuxt/ui", "@nuxt/fonts"],
+  modules: ["@nuxthub/core", "@nuxt/eslint", "@nuxt/fonts", "@nuxtjs/turnstile", "@nuxt/scripts", "nuxt-auth-utils"],
+  css: ["~/assets/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   // https://devtools.nuxt.com
   devtools: { enabled: true },
 
+  turnstile: {
+    siteKey: process.env.TURNSTILE_SITE_KEY,
+    addValidateEndpoint: true,
+  },
+
   // Env variables - https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
   runtimeConfig: {
     public: {},
+    turnstile: {
+      secretKey: process.env.TURNSTILE_SECRET_KEY,
+    },
   },
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
   future: { compatibilityVersion: 4 },
