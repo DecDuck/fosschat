@@ -45,7 +45,7 @@ function submit() {
 </script>
 
 <style>
-body {
+#background {
   background-color: #f3f4f6;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23d1d5db' fill-opacity='0.2'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -53,7 +53,8 @@ body {
 
 <template>
   <div
-    class="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8"
+  id="background"
+    class="flex min-h-screen flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8"
   >
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <img
@@ -63,7 +64,7 @@ body {
       />
 
       <h2
-        class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900"
+        class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-zinc-900"
       >
         Create your account
       </h2>
@@ -76,14 +77,12 @@ body {
             v-model="dataObject.displayName"
             name="displayName"
             label="Display Name"
-            placeholder="MyGamerTag#111"
             :error="errors['displayName']"
           />
           <ValidatingTextInput
             v-model="dataObject.email"
             name="email"
             label="Email"
-            placeholder="you@example.com"
             :error="errors['email']"
           />
 
@@ -91,7 +90,6 @@ body {
             v-model="dataObject.username"
             name="username"
             label="Username"
-            placeholder="yourusername"
             :error="errors['username']"
           />
 
@@ -112,10 +110,10 @@ body {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                    class="col-start-1 row-start-1 appearance-none rounded-sm border border-zinc-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-zinc-300 disabled:bg-zinc-100 disabled:checked:bg-zinc-100 forced-colors:appearance-auto"
                   />
                   <svg
-                    class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
+                    class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-zinc-950/25"
                     viewBox="0 0 14 14"
                     fill="none"
                   >
@@ -136,7 +134,7 @@ body {
                   </svg>
                 </div>
               </div>
-              <label for="remember-me" class="block text-sm/6 text-gray-900"
+              <label for="remember-me" class="block text-sm/6 text-zinc-900"
                 >Remember me</label
               >
             </div>
@@ -178,17 +176,17 @@ body {
         <div>
           <div class="relative mt-10">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
-              <div class="w-full border-t border-gray-200" />
+              <div class="w-full border-t border-zinc-200" />
             </div>
             <div class="relative flex justify-center text-sm/6 font-medium">
-              <span class="bg-white px-6 text-gray-900">Or continue with</span>
+              <span class="bg-white px-6 text-zinc-900">Or continue with</span>
             </div>
           </div>
 
           <div class="mt-6 grid grid-cols-2 gap-4">
             <a
               href="#"
-              class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus-visible:ring-transparent"
+              class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-zinc-900 shadow-xs ring-1 ring-zinc-300 ring-inset hover:bg-zinc-50 focus-visible:ring-transparent"
             >
               <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24">
                 <path
@@ -213,7 +211,7 @@ body {
 
             <a
               href="#"
-              class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus-visible:ring-transparent"
+              class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-zinc-900 shadow-xs ring-1 ring-zinc-300 ring-inset hover:bg-zinc-50 focus-visible:ring-transparent"
             >
               <svg
                 class="size-5 fill-[#24292F]"
@@ -233,7 +231,7 @@ body {
         </div>
       </div>
 
-      <p class="mt-10 text-center text-sm/6 text-gray-500">
+      <p class="mt-10 text-center text-sm/6 text-zinc-500">
         Already have an account?
         {{ " " }}
         <NuxtLink

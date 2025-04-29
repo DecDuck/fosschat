@@ -58,3 +58,7 @@ export const signinsRelation = relations(signins, ({ one }) => ({
     relationName: "user_signins",
   }),
 }));
+
+export type SessionType = {
+  userId?: string
+}

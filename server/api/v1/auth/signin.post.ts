@@ -42,5 +42,18 @@ export default defineEventHandler(async (h3) => {
       statusMessage: "Invalid username or password.",
     });
 
-  setUserSession(h3, { userId: signinObject.userId, at: new Date() });
+  const user = (
+    await db
+      .select()
+      .from(users)
+      .where(eq(users.id, signinObject.userId))
+      .limit(1)
+  ).at(0);
+  if (!user)
+    throw createError({
+      statusCode: 500,
+      statusMessage: "Somehow invalid signin method - cannot find account. ",
+    });
+
+  await setUserSession(h3, { user });
 });

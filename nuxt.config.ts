@@ -3,19 +3,17 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // https://nuxt.com/modules
-  modules: ["@nuxthub/core", "@nuxt/eslint", "@nuxt/fonts", "@nuxtjs/turnstile", "@nuxt/scripts", "nuxt-auth-utils"],
-  css: ["~/assets/main.css"],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  modules: [
+    "@nuxthub/core",
+    "@nuxt/fonts",
+    "@nuxtjs/turnstile",
+    "@nuxt/scripts",
+    "nuxt-auth-utils",
+  ],
 
   // https://devtools.nuxt.com
   devtools: { enabled: true },
-
-  turnstile: {
-    siteKey: process.env.TURNSTILE_SITE_KEY,
-    addValidateEndpoint: true,
-  },
+  css: ["~/assets/main.css"],
 
   // Env variables - https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
   runtimeConfig: {
@@ -40,6 +38,9 @@ export default defineNuxtConfig({
     workers: true,
     blob: true,
   },
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   // Development config
   eslint: {
@@ -50,4 +51,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  turnstile: {
+    siteKey: process.env.TURNSTILE_SITE_KEY,
+    addValidateEndpoint: true,
+  },
+
+  
 });

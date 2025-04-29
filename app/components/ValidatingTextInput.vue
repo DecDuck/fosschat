@@ -2,7 +2,7 @@
   <div>
     <label
       :for="props.name"
-      class="block text-sm/6 font-medium text-gray-900"
+      class="block text-sm/6 font-medium text-zinc-900"
       >{{ props.label }}</label
     >
     <div class="mt-2 relative flex">
@@ -16,7 +16,7 @@
         :class="[
           'block w-full rounded-md bg-white px-3 py-1.5 text-base -outline-offset-1 sm:text-sm/6 focus:outline-2 focus:-outline-offset-2',
           !props.error &&
-            'text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-indigo-600',
+            'text-zinc-900 outline-1 outline-zinc-300 placeholder:text-zinc-400 focus:outline-indigo-600',
           props.error &&
             'text-red-600 outline-2 outline-red-600 focus:outline-red-600',
         ]"
