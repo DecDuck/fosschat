@@ -17,6 +17,11 @@ export default defineEventHandler(async (h3) => {
   }
 
   const token = body.token;
+  if (!token)
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Please complete CAPTCHA.",
+    });
   const turnstileVerification = await verifyTurnstileToken(token, h3);
   if (!turnstileVerification.success)
     throw createError({

@@ -99,19 +99,21 @@ const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession();
       </ul>
     </nav>
 
-    <div class="mt-auto inline-flex m-1 gap-x-1">
+    <div v-if="user" class="mt-auto inline-flex m-1 gap-x-1">
       <a
         href="#"
         class="rounded transition grow-1 flex items-center gap-x-4 px-6 py-3 text-sm/6 font-semibold text-white bg-zinc-900 hover:bg-zinc-700"
       >
         <img
-          class="size-8 rounded-full bg-indigo-700"
+          class="size-8 rounded-full bg-zinc-900"
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
           alt=""
         />
         <div class="flex flex-col">
           <span>{{ user.displayName }}</span>
-          <span class="-mt-1 font-mono text-xs text-zinc-400">@{{ user.username }} </span>
+          <span class="-mt-1 font-mono text-xs text-zinc-400"
+            >@{{ user.username }}
+          </span>
         </div>
       </a>
       <button
@@ -119,6 +121,9 @@ const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession();
       >
         <Cog6ToothIcon class="size-6" />
       </button>
+    </div>
+    <div v-else class="mt-auto inline-flex m-1 gap-x-1">
+      <SpinningButton href="/signin"> Sign in &rarr; </SpinningButton>
     </div>
   </div>
 </template>

@@ -1,11 +1,13 @@
 <template>
-  <button
+  <component
+    :is="isLink ? NuxtLink : 'button'"
     type="submit"
     :disabled="props.spinning"
+    :href="isLink ? props.href : undefined"
     :class="[
-      'flex w-full h-9 justify-center items-center rounded-md  px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
-      props.spinning && 'bg-indigo-500',
-      !props.spinning && 'cursor-pointer bg-indigo-600 hover:bg-indigo-500',
+      'flex w-full h-9 justify-center items-center rounded-md  px-3 py-1.5 text-sm/6 font-semibold text-zinc-900 shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100',
+      props.spinning && 'bg-zinc-300',
+      !props.spinning && 'cursor-pointer bg-zinc-100 hover:bg-zinc-200',
     ]"
   >
     <slot v-if="!spinning" />
@@ -29,9 +31,14 @@
       </svg>
       <span class="sr-only">Loading...</span>
     </div>
-  </button>
+  </component>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ spinning: boolean }>();
+import { defineNuxtLink } from "nuxt/app";
+
+const props = defineProps<{ spinning: boolean; href?: string }>();
+
+const isLink = !!props.href;
+const NuxtLink = defineNuxtLink({});
 </script>

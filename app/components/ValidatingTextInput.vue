@@ -2,7 +2,7 @@
   <div>
     <label
       :for="props.name"
-      class="block text-sm/6 font-medium text-zinc-900"
+      class="block text-sm/6 font-medium text-zinc-100"
       >{{ props.label }}</label
     >
     <div class="mt-2 relative flex">
@@ -14,11 +14,11 @@
         :placeholder="props.placeholder"
         required
         :class="[
-          'block w-full rounded-md bg-white px-3 py-1.5 text-base -outline-offset-1 sm:text-sm/6 focus:outline-2 focus:-outline-offset-2',
+          'block w-full rounded-md bg-zinc-950/50 px-3 py-1.5 text-base -outline-offset-1 sm:text-sm/6 focus:outline-2 focus:-outline-offset-2',
           !props.error &&
-            'text-zinc-900 outline-1 outline-zinc-300 placeholder:text-zinc-400 focus:outline-indigo-600',
+            'text-zinc-100 outline-1 outline-zinc-800 placeholder:text-zinc-600 focus:outline-zinc-300',
           props.error &&
-            'text-red-600 outline-2 outline-red-600 focus:outline-red-600',
+            'text-red-400 outline-2 outline-red-400 focus:outline-red-400',
         ]"
         v-model="value"
       />
@@ -30,7 +30,7 @@
     </div>
     <p
       v-if="props.error"
-      class="mt-2 text-sm text-red-600"
+      class="mt-2 text-sm text-red-400"
       :id="`${props.name}-error`"
     >
       {{ props.error }}

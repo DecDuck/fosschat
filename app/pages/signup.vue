@@ -44,16 +44,15 @@ function submit() {
 }
 </script>
 
-<style>
+<style scoped>
 #background {
-  background-color: #f3f4f6;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23d1d5db' fill-opacity='0.2'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%2352525b' fill-opacity='0.2'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
 }
 </style>
 
 <template>
   <div
-  id="background"
+    id="background"
     class="flex min-h-screen flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8"
   >
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
@@ -64,14 +63,14 @@ function submit() {
       />
 
       <h2
-        class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-zinc-900"
+        class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-zinc-100"
       >
         Create your account
       </h2>
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-      <div class="bg-white px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
+      <div class="bg-zinc-950 px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
         <form @submit.prevent="submit" class="space-y-6">
           <ValidatingTextInput
             v-model="dataObject.displayName"
@@ -153,13 +152,13 @@ function submit() {
             <NuxtTurnstile v-model="dataObject.token" />
           </div>
 
-          <div v-if="remoteError" class="rounded-md bg-red-50 p-4">
+          <div v-if="remoteError" class="rounded-md bg-red-500/10 p-4">
             <div class="flex">
               <div class="shrink-0">
-                <XCircleIcon class="size-5 text-red-400" aria-hidden="true" />
+                <XCircleIcon class="size-5 text-red-500" aria-hidden="true" />
               </div>
               <div class="ml-3">
-                <h3 class="text-sm font-medium text-red-800">
+                <h3 class="text-sm font-medium text-red-500">
                   {{ remoteError }}
                 </h3>
               </div>
@@ -176,10 +175,10 @@ function submit() {
         <div>
           <div class="relative mt-10">
             <div class="absolute inset-0 flex items-center" aria-hidden="true">
-              <div class="w-full border-t border-zinc-200" />
+              <div class="w-full border-t border-zinc-700" />
             </div>
             <div class="relative flex justify-center text-sm/6 font-medium">
-              <span class="bg-white px-6 text-zinc-900">Or continue with</span>
+              <span class="bg-zinc-950 px-6 text-zinc-100">Or continue with</span>
             </div>
           </div>
 
@@ -236,7 +235,7 @@ function submit() {
         {{ " " }}
         <NuxtLink
           href="/signin"
-          class="font-semibold text-indigo-600 hover:text-indigo-500"
+          class="font-semibold text-zinc-100 hover:text-zinc-300"
           >Sign in &rarr;</NuxtLink
         >
       </p>

@@ -1,8 +1,8 @@
 <template>
-  <Combobox as="div" v-model="selectedPerson" @update:modelValue="query = ''">
+  <Combobox as="div" v-model="selectedServer" @update:modelValue="query = ''">
     <div class="relative">
       <img
-        :src="selectedPerson.imageUrl"
+        :src="selectedServer.imageUrl"
         alt=""
         class="absolute top-1/2 -translate-y-1/2 left-3 flex items-center size-7 shrink-0 rounded-full"
       />
@@ -19,11 +19,11 @@
       </ComboboxButton>
 
       <ComboboxOptions
-        v-if="filteredPeople.length > 0"
+        v-if="filteredServers.length > 0"
         class="absolute z-10 max-h-56 w-full overflow-auto rounded-md bg-zinc-900 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm"
       >
         <ComboboxOption
-          v-for="person in filteredPeople"
+          v-for="person in filteredServers"
           :key="person.id"
           :value="person"
           as="template"
@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { CheckIcon, ChevronDownIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 import {
   Combobox,
@@ -75,7 +75,9 @@ import {
 } from "@headlessui/vue";
 import { PlusIcon } from "@heroicons/vue/16/solid";
 
-const people = [
+const router = useRouter();
+
+const servers = [
   {
     id: 1,
     name: "Leslie Alexander",
@@ -91,12 +93,16 @@ const people = [
 ];
 
 const query = ref("");
-const selectedPerson = ref(people[0]);
-const filteredPeople = computed(() =>
+const selectedServer = ref(servers[0]);
+const filteredServers = computed(() =>
   query.value === ""
-    ? people
-    : people.filter((person) => {
-        return person.name.toLowerCase().includes(query.value.toLowerCase());
+    ? servers
+    : servers.filter((server) => {
+        return server.name.toLowerCase().includes(query.value.toLowerCase());
       })
 );
+
+watch(selectedServer, (n) => {
+  router.push(`/${n.id}/`)
+})
 </script>
